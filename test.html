@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Clear Test</title>
+	<script type="text/javascript" src="jquery-1.2.1.pack.js" charset="utf-8"></script>
+	<!-- <script type="text/javascript" src="jquery.clear.js" charset="utf-8"></script> -->
+	<script type="text/javascript" src="jquery.clear.min.js" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$('#clear_input').click(function() {
+				$(':input').clear();
+				return false;
+			});
+			$('#clear_form').click(function() {
+				$('form').clear();
+				return false;
+			})
+		});
+	</script>
+</head>
+<body>
+<ul>
+<li><a id="clear_input" href="#">Click to clear each field matching the <code>:input</code> selector</a></li>
+<li><a id="clear_form" href="#">Click to clear using the <code>form</code> selector</a></li>
+</ul>
+<form>
+<p>
+	<input type="text" value="I have some value!" />
+</p>
+<p>
+	<textarea>Me too!</textarea>
+</p>
+<p>
+	<input type="checkbox" checked="checked" id="checkbox" /> <label for="checkbox">Is this a checkbox?</label>
+</p>
+<p>
+	<input type="radio" name="bob" value="0" checked="checked" id="radio1" /> <label for="radio1">Bob</label><br />
+	<input type="radio" name="bob" value="1" id="radio2" /> <label for="radio2">Rob</label><br />
+</p>
+<p>
+	<select>
+		<option>I'm the top, default option</option>
+		<option selected="selected">I'm a special pre-selected option</option>
+	</select>
+</p>
+</form>
+</body>
+</html>
