@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>jQuery Clear Test</title>
+	<link rel="stylesheet" type="text/css" href="testsuite.css">
+	<style type="text/css">
+    #inputs { display: none; }
+  </style>
+</head>
+<body>
+  <h1>jQuery Clear Test</h1>
+  <h2 id="banner"></h2>
+  <ol id="tests"></ol>
+  <div id="results"></div>
+  <div id="main"></div>
+  
+  <script type="text/javascript" src="jquery-1.3.1.min.js"></script>
+	<script type="text/javascript" src="../jquery.clear.js"></script>
+	<script type="text/javascript" src="testrunner.js"></script>
+	<script type="text/javascript">
+	module("Text fields");
+	test("should clear a pre-populated field", function() {
+	  equals($("#basic1").val(), "A value", "The field should start with a value.");
+	  $("#basic1").clear();
+	  equals($("#basic1").val(), "", "The field should now be blank.");
+	});
+	test("should clear an empty field", function() {
+	  equals($("#basic2").val(), "", "The field should start blank.");
+	  $("#basic2").clear();
+	  equals($("#basic2").val(), "", "The field should still be blank.");
+	});
+	test("should clear a field with a changed value", function() {
+	  equals($("#basic3").val(), "", "The field should start blank.");
+	  $("#basic3").val("A new value");
+	  equals($("#basic3").val(), "A new value", "The field should now be populated.");
+	  $("#basic3").clear();
+	  equals($("#basic3").val(), "", "The field should now be blank.");
+	});
+	module("Text areas");
+	test("should clear a pre-populated field", function() {
+	  equals($("#basic4").val(), "A value", "The field should start with a value.");
+	  $("#basic4").clear();
+	  equals($("#basic4").val(), "", "The field should now be blank.");
+	});
+	test("should clear an empty field", function() {
+	  equals($("#basic5").val(), "", "The field should start blank.");
+	  $("#basic5").clear();
+	  equals($("#basic5").val(), "", "The field should still be blank.");
+	});
+	test("should clear a field with a changed value", function() {
+	  equals($("#basic6").val(), "", "The field should start blank.");
+	  $("#basic6").val("A new value");
+	  equals($("#basic6").val(), "A new value", "The field should now be populated.");
+	  $("#basic6").clear();
+	  equals($("#basic6").val(), "", "The field should now be blank.");
+	});
+	module("Check boxes");
+	test("should clear a checked checkbox", function() {
+	  ok($("#check1").is(":checked"), "The checkbox should start checked.");
+	  $("#check1").clear();
+	  ok(!$("#check1").is(":checked"), "The checkbox is no longer checked.");
+	});
+	test("should clear an unchecked checkbox", function() {
+	  ok(!$("#check2").is(":checked"), "The checkbox should not be checked.");
+	  $("#check2").clear();
+	  ok(!$("#check2").is(":checked"), "The checkbox is still not checked.");
+	});
+	module("Radio buttons");
+	test("should clear a checked radio button", function() {
+	  ok($("#radio1").is(":checked"), "The radio button should start checked.");
+	  $("#radio1").clear();
+	  ok(!$("#radio1").is(":checked"), "The radio button is no longer checked.");
+	});
+		test("should clear an unchecked radio button", function() {
+	  ok(!$("#radio2").is(":checked"), "The radio button should not start checked.");
+	  $("#radio2").clear();
+	  ok(!$("#radio2").is(":checked"), "The radio button is no longer checked.");
+	});
+	module("Select boxes");
+	test("should de-select an option in a select box", function() {
+	  equals($("#select1").val(), "2", "The second option should be selected first.");
+	  $("#select1").clear();
+	  equals($("#select1").val(), null, "The select box should have no selected value.");
+	})
+	module("Forms");
+	test("should clear all inputs within a form", function() {
+	  equals($("#forminput1").val(), "Something", "Form input should have a value.");
+	  equals($("#forminput2").val(), "Something", "Form input should have a value.");
+	  $("#form1").clear();
+	  equals($("#forminput1").val(), "", "Form input should now be blank.");
+	  equals($("#forminput2").val(), "", "Form input should now be blank.");
+	});
+	</script>
+	<div id="inputs">
+    <p>
+      <input id="basic1" value="A value">
+      <input id="basic2" value="">
+      <input id="basic3" value="">
+      <textarea id="basic4">A value</textarea>
+      <textarea id="basic5"></textarea>
+      <textarea id="basic6"></textarea>
+      <input id="check1" type="checkbox" checked="checked">
+      <input id="check2" type="checkbox">
+      <input id="radio1" type="radio" checked="checked">
+      <input id="radio2" type="radio">
+      <select id="select1">
+        <option>1</option>
+        <option selected="selected">2</option>
+      </select>
+      <form id="form1">
+        <input id="forminput1" value="Something">
+        <textarea id="forminput2">Something</textarea>
+      </form>
+    </p>
+  </div>
+</body>
+</html>
